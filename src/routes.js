@@ -21,12 +21,12 @@ function Routes() {
         headerTintColor: '#FFF',
       }}>
       <Stack.Screen
-        name="Home"
+        name="Main"
         component={Main}
         options={{title: 'Usuários'}}
       />
       <Stack.Screen
-        name="Profile"
+        name="User"
         component={User}
         initialParams={{user: 'User'}}
       />
