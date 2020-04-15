@@ -1,13 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View} from 'react-native';
 import PropTypes from 'prop-types';
 
+import api from '../../services/api';
+
 // import { Container } from './styles';
 
-export default function User({route}) {
-  const {user} = route.params;
-  console.tron.log(user);
-  return <View />;
+export default class User extends Component {
+  constructor() {
+    super();
+    this.state = {
+      stars: [],
+    };
+  }
+
+  async componentDidMount() {
+    const {route} = this.props;
+    const {user} = route.params;
+
+    const response = await api.get(`/users/${user.login}/starred`);
+    this.setState({stars: response.data});
+  }
+
+  render() {
+    const {stars} = this.state;
+    return <View />;
+  }
 }
 
 User.propTypes = {

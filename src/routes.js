@@ -28,7 +28,7 @@ function Routes() {
       <Stack.Screen
         name="User"
         component={User}
-        initialParams={{user: 'User'}}
+        options={({route}) => ({title: route.params.user.name})}
       />
     </Stack.Navigator>
   );
